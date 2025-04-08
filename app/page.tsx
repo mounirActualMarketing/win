@@ -180,11 +180,11 @@ export default function Home() {
       </section>
 
       {/* Promotion Section */}
-      <section className="py-16">
+      <section className="py-12 md:py-16">
         <div className="container mx-auto px-4">
           {/* Headline */}
           <h2 
-            className="text-center mb-12 text-4xl lg:text-4xl"
+            className="text-center mb-8 md:mb-12 text-2xl md:text-3xl lg:text-4xl"
             style={{ 
               direction: 'rtl',
               fontFamily: 'var(--font-montserrat-arabic)',
@@ -199,14 +199,14 @@ export default function Home() {
           <div className="max-w-5xl mx-auto">
             {/* Rounded container with light pink background */}
             <div 
-              className="bg-[#FFF1F3] rounded-5xl p-6 lg:p-10 mb-10"
+              className="bg-[#FFF1F3] rounded-3xl md:rounded-5xl p-4 md:p-6 lg:p-10 mb-6 md:mb-10"
               style={{
                 border: '1px solid #F02C3E',
-                borderRadius: '45px'
+                borderRadius: '25px'
               }}
             >
               {/* Discount ribbon */}
-              <div className="flex flex-col items-center justify-center mb-8">
+              <div className="flex flex-col items-center justify-center mb-4 md:mb-8">
                 <div 
                   className="w-full max-w-[700px] text-center"
                   style={{
@@ -214,22 +214,22 @@ export default function Home() {
                   }}
                 >
                   {/* Outer pink background */}
-                  <div className="bg-[#F9C1CC] rounded-full py-5 px-2 flex justify-center items-center">
+                  <div className="bg-[#F9C1CC] rounded-full py-3 md:py-5 px-2 flex justify-center items-center">
                     <div className="flex items-center justify-center" style={{ direction: 'rtl' }}>
-                      <div className="text-white font-bold text-4xl mr-4">خصم بقيمة</div>
+                      <div className="text-white font-bold text-xl md:text-2xl lg:text-4xl mr-2 md:mr-4">خصم بقيمة</div>
                       <div 
-                        className="rounded-lg inline-flex items-center px-6 py-1"
+                        className="rounded-lg inline-flex items-center px-3 md:px-6 py-1"
                         style={{ 
                           background: 'linear-gradient(90deg, #E74A58 0%, #8C81D7 100%)',
                         }}
                       >
-                        <span className="text-white text-6xl font-bold">1200</span>
+                        <span className="text-white text-3xl md:text-4xl lg:text-6xl font-bold">1200</span>
                         <Image
                           src="/images/rial.png"
                           alt="Currency Symbol"
                           width={48}
                           height={48}
-                          className="ml-1 object-contain"
+                          className="ml-1 object-contain w-6 h-6 md:w-8 md:h-8 lg:w-12 lg:h-12"
                         />
                       </div>
                     </div>
@@ -238,16 +238,16 @@ export default function Home() {
               </div>
 
               {/* Prize opportunities */}
-              <div className="flex flex-col md:flex-row gap-6 justify-between">
+              <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-between">
                 {/* Dubai Trip Prize */}
-                <div className="bg-[#F4616E] rounded-2xl p-6 flex flex-col md:flex-row items-center text-white md:w-1/2">
-                  <div className="md:w-1/3 mb-4 md:mb-0">
+                <div className="bg-[#F4616E] rounded-xl md:rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center text-white md:w-1/2">
+                  <div className="md:w-1/3 mb-3 md:mb-0">
                     <Image
                       src="/images/dubai.jpeg"
                       alt="Dubai"
                       width={150}
                       height={180}
-                      className="object-cover rounded-lg"
+                      className="object-cover rounded-lg w-28 h-28 md:w-auto md:h-auto"
                     />
                   </div>
                   <div className="md:w-2/3 text-right"
@@ -256,9 +256,9 @@ export default function Home() {
                       fontFamily: 'var(--font-montserrat-arabic)',
                     }}
                   >
-                    <h3 className="text-2xl font-bold mb-2">فرصة لربح</h3>
+                    <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">فرصة لربح</h3>
                     <p 
-                      className="text-xl font-bold mb-2 px-2 py-1 rounded"
+                      className="text-lg md:text-xl font-bold mb-1 md:mb-2 px-2 py-1 rounded"
                       style={{ 
                         background: 'linear-gradient(90deg, #FA5C78 0%, #8C81D7 100%)',
                         display: 'inline-block'
@@ -266,20 +266,20 @@ export default function Home() {
                     >
                       تذكرتان سفر إلى
                     </p>
-                    <p className="text-l font-bold mb-1">دبي مع إقامة</p>
-                    <p className="text-l font-bold">لمدة 3 أيام</p>
+                    <p className="text-base md:text-lg font-bold mb-1">دبي مع إقامة</p>
+                    <p className="text-base md:text-lg font-bold">لمدة 3 أيام</p>
                   </div>
                 </div>
                 
                 {/* iPhone Prize */}
-                <div className="bg-[#E74A58] rounded-2xl p-6 flex flex-col md:flex-row items-center text-white md:w-1/2">
-                  <div className="md:w-1/3 mb-4 md:mb-0">
+                <div className="bg-[#E74A58] rounded-xl md:rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center text-white md:w-1/2">
+                  <div className="md:w-1/3 mb-3 md:mb-0">
                     <Image
                       src="/images/iphone.png"
                       alt="iPhone"
                       width={150}
                       height={180}
-                      className="object-contain"
+                      className="object-contain w-28 h-28 md:w-auto md:h-auto"
                     />
                   </div>
                   <div className="md:w-2/3 text-right"
@@ -289,7 +289,7 @@ export default function Home() {
                     }}
                   >
                     <h3 
-                      className="text-xl font-bold mb-2 px-2 py-1 rounded"
+                      className="text-lg md:text-xl font-bold mb-1 md:mb-2 px-2 py-1 rounded"
                       style={{ 
                         background: 'linear-gradient(90deg, #FA5C78 0%, #8C81D7 100%)',
                         display: 'inline-block'
@@ -297,7 +297,7 @@ export default function Home() {
                     >
                       فرصة لربح
                     </h3>
-                    <p className="text-3xl font-bold">أيفون جديد</p>
+                    <p className="text-xl md:text-2xl lg:text-3xl font-bold">أيفون جديد</p>
                   </div>
                 </div>
               </div>
@@ -306,7 +306,7 @@ export default function Home() {
             {/* Register button */}
             <div className="flex justify-center">
               <button
-                className="bg-[#E74A58] text-white px-10 py-4 rounded-full text-2xl font-bold transition-colors hover:bg-[#d42838]"
+                className="bg-[#E74A58] text-white px-6 md:px-10 py-3 md:py-4 rounded-full text-xl md:text-2xl font-bold transition-transform hover:scale-105 hover:bg-[#d42838]"
                 style={{ 
                   direction: 'rtl',
                   fontFamily: 'var(--font-montserrat-arabic)'
@@ -321,12 +321,12 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-[#0B2E52] text-white">
+      <section className="py-12 md:py-16 bg-[#0B2E52] text-white">
         <div className="container mx-auto px-4">
           {/* Section headlines */}
-          <div className="text-center mb-16" style={{ direction: 'rtl' }}>
+          <div className="text-center mb-10 md:mb-16" style={{ direction: 'rtl' }}>
             <h2 
-              className="text-5xl font-bold mb-4"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4"
               style={{ 
                 fontFamily: 'var(--font-montserrat-arabic)',
               }}
@@ -334,7 +334,7 @@ export default function Home() {
               تجربة تعلّم استثنائية ومرونة لا حدود لها
             </h2>
             <h3 
-              className="text-4xl font-bold"
+              className="text-2xl md:text-3xl lg:text-4xl font-bold"
               style={{ 
                 fontFamily: 'var(--font-montserrat-arabic)',
                 color: '#ED3043',
@@ -347,26 +347,27 @@ export default function Home() {
           {/* Features cards */}
           <div className="max-w-6xl mx-auto">
             <div 
-              className="rounded-3xl p-8 mb-12"
+              className="rounded-xl md:rounded-3xl p-4 md:p-8 mb-8 md:mb-12"
               style={{
                 backgroundColor: '#0d2844',
                 border: '1px solid white'
               }}
             >
-              <div className="flex flex-col md:flex-row gap-6 justify-between">
+              <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-between">
                 {/* Feature 1: Flexible study hours */}
                 <div 
-                  className="bg-[#F9C1CC] rounded-2xl p-6 flex flex-col items-center text-center md:w-1/3"
+                  className="bg-[#F9C1CC] rounded-xl md:rounded-2xl p-4 md:p-6 flex flex-col items-center text-center md:w-1/3 mb-4 md:mb-0"
                   style={{
                     border: '1px solid white'
                   }}
                 >
-                  <div className="mb-6">
+                  <div className="mb-4 md:mb-6">
                     <Image
                       src="/images/icons/calendar.png"
                       alt="Calendar Icon"
-                      width={100}
-                      height={100}
+                      width={80}
+                      height={80}
+                      className="w-16 h-16 md:w-auto md:h-auto object-contain"
                     />
                   </div>
                   <div
@@ -375,24 +376,25 @@ export default function Home() {
                       fontFamily: 'var(--font-montserrat-arabic)',
                     }}
                   >
-                    <h3 className="text-[#0B2E52] text-2xl font-bold mb-2">ساعات دراسة مرنة</h3>
-                    <p className="text-[#0B2E52] text-xl font-medium">تناسب جدولك</p>
+                    <h3 className="text-[#0B2E52] text-xl md:text-2xl font-bold mb-1 md:mb-2">ساعات دراسة مرنة</h3>
+                    <p className="text-[#0B2E52] text-lg md:text-xl font-medium">تناسب جدولك</p>
                   </div>
                 </div>
 
                 {/* Feature 2: Get certificates */}
                 <div 
-                  className="bg-[#E74A58] rounded-2xl p-6 flex flex-col items-center text-center md:w-1/3"
+                  className="bg-[#E74A58] rounded-xl md:rounded-2xl p-4 md:p-6 flex flex-col items-center text-center md:w-1/3 mb-4 md:mb-0"
                   style={{
                     border: '1px solid white'
                   }}
                 >
-                  <div className="mb-6">
+                  <div className="mb-4 md:mb-6">
                     <Image
                       src="/images/icons/trophy.png"
                       alt="Trophy Icon"
-                      width={100}
-                      height={100}
+                      width={80}
+                      height={80}
+                      className="w-16 h-16 md:w-auto md:h-auto object-contain"
                     />
                   </div>
                   <div
@@ -401,24 +403,25 @@ export default function Home() {
                       fontFamily: 'var(--font-montserrat-arabic)',
                     }}
                   >
-                    <h3 className="text-white text-2xl font-bold mb-2">احصل على شهادات</h3>
-                    <p className="text-white text-xl font-medium">وول ستريت! وثّق انجازاتك</p>
+                    <h3 className="text-white text-xl md:text-2xl font-bold mb-1 md:mb-2">احصل على شهادات</h3>
+                    <p className="text-white text-lg md:text-xl font-medium">وول ستريت! وثّق انجازاتك</p>
                   </div>
                 </div>
 
                 {/* Feature 3: Priority in booking */}
                 <div 
-                  className="bg-[#D93542] rounded-2xl p-6 flex flex-col items-center text-center md:w-1/3"
+                  className="bg-[#D93542] rounded-xl md:rounded-2xl p-4 md:p-6 flex flex-col items-center text-center md:w-1/3"
                   style={{
                     border: '1px solid white'
                   }}
                 >
-                  <div className="mb-6">
+                  <div className="mb-4 md:mb-6">
                     <Image
                       src="/images/icons/thumbsup.png"
                       alt="Thumbs Up Icon"
-                      width={100}
-                      height={100}
+                      width={80}
+                      height={80}
+                      className="w-16 h-16 md:w-auto md:h-auto object-contain"
                     />
                   </div>
                   <div
@@ -427,8 +430,8 @@ export default function Home() {
                       fontFamily: 'var(--font-montserrat-arabic)',
                     }}
                   >
-                    <h3 className="text-white text-2xl font-bold mb-2">الأولوية في حجز</h3>
-                    <p className="text-white text-xl font-medium">الفصول الدراسية</p>
+                    <h3 className="text-white text-xl md:text-2xl font-bold mb-1 md:mb-2">الأولوية في حجز</h3>
+                    <p className="text-white text-lg md:text-xl font-medium">الفصول الدراسية</p>
                   </div>
                 </div>
               </div>
@@ -437,7 +440,7 @@ export default function Home() {
             {/* CTA Button */}
             <div className="flex justify-center">
               <button
-                className="bg-[#E74A58] text-white px-12 py-5 rounded-full text-2xl font-bold transition-colors hover:bg-[#d42838]"
+                className="bg-[#E74A58] text-white px-6 md:px-12 py-3 md:py-5 rounded-full text-xl md:text-2xl font-bold transition-transform hover:scale-105 hover:bg-[#d42838]"
                 style={{ 
                   direction: 'rtl',
                   fontFamily: 'var(--font-montserrat-arabic)'
@@ -452,12 +455,12 @@ export default function Home() {
       </section>
 
       {/* Subscriber Benefits Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
           {/* Section headlines */}
-          <div className="text-center mb-16" style={{ direction: 'rtl' }}>
+          <div className="text-center mb-10 md:mb-16" style={{ direction: 'rtl' }}>
             <h2 
-              className="text-5xl font-bold"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold"
               style={{ 
                 fontFamily: 'var(--font-montserrat-arabic)',
               }}
@@ -471,156 +474,161 @@ export default function Home() {
           {/* Benefits cards container */}
           <div className="max-w-6xl mx-auto">
             <div 
-              className="rounded-3xl p-6 lg:p-10 mb-12 bg-[#FFF5F7] border border-[#E74A58]"
+              className="rounded-xl md:rounded-3xl p-4 md:p-6 lg:p-10 mb-8 md:mb-12 bg-[#FFF5F7] border border-[#E74A58]"
             >
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
                 {/* Benefit 1: Access to centers */}
                 <div 
-                  className="rounded-2xl overflow-hidden shadow-md transform transition-transform hover:scale-105"
+                  className="rounded-xl md:rounded-2xl overflow-hidden shadow-md transform transition-transform hover:scale-105"
                   style={{
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
                   }}
                 >
-                  <div className="bg-[#F9C1CC] p-6 flex justify-center items-center h-48">
+                  <div className="bg-[#0f2f4c] p-4 md:p-6 flex justify-center items-center h-36 md:h-48">
                     <Image
                       src="/images/icons/map.png"
                       alt="Map Location Icon"
                       width={80}
                       height={80}
+                      className="w-16 h-16 md:w-20 md:h-20 object-contain"
                     />
                   </div>
                   <div 
-                    className="bg-[#E74A58] p-6 text-center text-white"
+                    className="bg-[#003359] p-4 md:p-6 text-center text-white"
                     style={{ 
                       direction: 'rtl',
                       fontFamily: 'var(--font-montserrat-arabic)',
-                      minHeight: '140px',
+                      minHeight: '100px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}
                   >
-                    <p className="text-lg font-bold leading-tight">استخدام جميع مراكزنا في أنحاء المملكة</p>
+                    <p className="text-base md:text-lg font-bold leading-tight">استخدام جميع مراكزنا في أنحاء المملكة</p>
                   </div>
                 </div>
 
                 {/* Benefit 2: Exclusive access to events */}
                 <div 
-                  className="rounded-2xl overflow-hidden shadow-md transform transition-transform hover:scale-105"
+                  className="rounded-xl md:rounded-2xl overflow-hidden shadow-md transform transition-transform hover:scale-105"
                   style={{
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
                   }}
                 >
-                  <div className="bg-[#F9C1CC] p-6 flex justify-center items-center h-48">
+                  <div className="bg-[#0f2f4c] p-4 md:p-6 flex justify-center items-center h-36 md:h-48">
                     <Image
                       src="/images/icons/arrows.png"
                       alt="Arrows Icon"
                       width={80}
                       height={80}
+                      className="w-16 h-16 md:w-20 md:h-20 object-contain"
                     />
                   </div>
                   <div 
-                    className="bg-[#E74A58] p-6 text-center text-white"
+                    className="bg-[#003359] p-4 md:p-6 text-center text-white"
                     style={{ 
                       direction: 'rtl',
                       fontFamily: 'var(--font-montserrat-arabic)',
-                      minHeight: '140px',
+                      minHeight: '100px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}
                   >
-                    <p className="text-lg font-bold leading-tight">دخول حصري للفعاليات والدورات التدريبية المميزة</p>
+                    <p className="text-base md:text-lg font-bold leading-tight">دخول حصري للفعاليات والدورات التدريبية المميزة</p>
                   </div>
                 </div>
 
                 {/* Benefit 3: Special trainer */}
                 <div 
-                  className="rounded-2xl overflow-hidden shadow-md transform transition-transform hover:scale-105"
+                  className="rounded-xl md:rounded-2xl overflow-hidden shadow-md transform transition-transform hover:scale-105"
                   style={{
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
                   }}
                 >
-                  <div className="bg-[#F9C1CC] p-6 flex justify-center items-center h-48">
+                  <div className="bg-[#0f2f4c] p-4 md:p-6 flex justify-center items-center h-36 md:h-48">
                     <Image
                       src="/images/icons/fingerprint.png"
                       alt="Fingerprint Icon"
                       width={80}
                       height={80}
+                      className="w-16 h-16 md:w-20 md:h-20 object-contain"
                     />
                   </div>
                   <div 
-                    className="bg-[#E74A58] p-6 text-center text-white"
+                    className="bg-[#003359] p-4 md:p-6 text-center text-white"
                     style={{ 
                       direction: 'rtl',
                       fontFamily: 'var(--font-montserrat-arabic)',
-                      minHeight: '140px',
+                      minHeight: '100px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}
                   >
-                    <p className="text-lg font-bold leading-tight">مدرب خاص لتحقيق أهدافك المهنية والدراسية</p>
+                    <p className="text-base md:text-lg font-bold leading-tight">مدرب خاص لتحقيق أهدافك المهنية والدراسية</p>
                   </div>
                 </div>
 
                 {/* Benefit 4: Family discount */}
                 <div 
-                  className="rounded-2xl overflow-hidden shadow-md transform transition-transform hover:scale-105"
+                  className="rounded-xl md:rounded-2xl overflow-hidden shadow-md transform transition-transform hover:scale-105"
                   style={{
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
                   }}
                 >
-                  <div className="bg-[#F9C1CC] p-6 flex justify-center items-center h-48">
+                  <div className="bg-[#0f2f4c] p-4 md:p-6 flex justify-center items-center h-36 md:h-48">
                     <Image
                       src="/images/icons/people.png"
                       alt="People Icon"
                       width={80}
                       height={80}
+                      className="w-16 h-16 md:w-20 md:h-20 object-contain"
                     />
                   </div>
                   <div 
-                    className="bg-[#E74A58] p-6 text-center text-white"
+                    className="bg-[#003359] p-4 md:p-6 text-center text-white"
                     style={{ 
                       direction: 'rtl',
                       fontFamily: 'var(--font-montserrat-arabic)',
-                      minHeight: '140px',
+                      minHeight: '100px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}
                   >
-                    <p className="text-lg font-bold leading-tight">خصم 30% حصري لاشتراك العائلة</p>
+                    <p className="text-base md:text-lg font-bold leading-tight">خصم 30% حصري لاشتراك العائلة</p>
                   </div>
                 </div>
 
                 {/* Benefit 5: Speak+ course */}
                 <div 
-                  className="rounded-2xl overflow-hidden shadow-md transform transition-transform hover:scale-105"
+                  className="rounded-xl md:rounded-2xl overflow-hidden shadow-md transform transition-transform hover:scale-105"
                   style={{
                     boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
                   }}
                 >
-                  <div className="bg-[#F9C1CC] p-6 flex justify-center items-center h-48">
+                  <div className="bg-[#0f2f4c] p-4 md:p-6 flex justify-center items-center h-36 md:h-48">
                     <Image
                       src="/images/icons/speakplus.png"
                       alt="Speak+ Logo"
                       width={120}
                       height={80}
+                      className="w-20 h-16 md:w-30 md:h-20 object-contain"
                     />
                   </div>
                   <div 
-                    className="bg-[#E74A58] p-6 text-center text-white"
+                    className="bg-[#003359] p-4 md:p-6 text-center text-white"
                     style={{ 
                       direction: 'rtl',
                       fontFamily: 'var(--font-montserrat-arabic)',
-                      minHeight: '140px',
+                      minHeight: '100px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
                     }}
                   >
-                    <p className="text-lg font-bold leading-tight">دورة Speak+ مجانية لمدة 3 أشهر!</p>
+                    <p className="text-base md:text-lg font-bold leading-tight">دورة Speak+ مجانية لمدة 3 أشهر!</p>
                   </div>
                 </div>
               </div>
@@ -629,7 +637,7 @@ export default function Home() {
             {/* CTA Button */}
             <div className="flex justify-center">
               <button
-                className="bg-[#E74A58] text-white px-12 py-5 rounded-full text-2xl font-bold transition-colors hover:bg-[#d42838]"
+                className="bg-[#E74A58] text-white px-6 md:px-12 py-3 md:py-5 rounded-full text-xl md:text-2xl font-bold transition-transform hover:scale-105 hover:bg-[#d42838]"
                 style={{ 
                   direction: 'rtl',
                   fontFamily: 'var(--font-montserrat-arabic)'
