@@ -2,6 +2,11 @@
 
 import { useEffect } from 'react';
 
+type HubspotFormError = Error | { 
+  message: string; 
+  [key: string]: unknown 
+};
+
 export default function HubspotEmbedForm() {
   useEffect(() => {
     // Create global hbspt object if it doesn't exist
@@ -27,7 +32,11 @@ export default function HubspotEmbedForm() {
             region: "na1",
             portalId: "2550768",
             formId: "5dbc2ee1-5e21-4e90-b721-ed3804904a1c",
-            target: "#directHubspotForm"
+            target: "#directHubspotForm",
+            onFormError: (err: HubspotFormError) => {
+              console.error('HubSpot form error:', err);
+              // Error is handled at the container level
+            }
           });
         } catch (e) {
           console.error('Error creating HubSpot form:', e);

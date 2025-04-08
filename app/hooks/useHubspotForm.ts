@@ -10,6 +10,11 @@ interface HubspotFormProps {
   isOpen: boolean;
 }
 
+type HubspotFormError = Error | { 
+  message: string; 
+  [key: string]: unknown 
+};
+
 export function useHubspotForm({
   portalId,
   formId,
@@ -56,6 +61,16 @@ export function useHubspotForm({
           formId,
           region,
           target: `#${containerRef.current.id}`,
+          onFormError: (err: HubspotFormError) => {
+            console.error('HubSpot form error:', err);
+            if (err instanceof Error) {
+              setError(err.message);
+            } else if (typeof err === 'object' && err.message) {
+              setError(err.message as string);
+            } else {
+              setError('Unknown form error occurred');
+            }
+          }
         });
         
         setIsLoaded(true);
@@ -97,6 +112,16 @@ export function useHubspotForm({
           formId,
           region,
           target: `#${containerRef.current.id || 'hubspotForm'}`,
+          onFormError: (err: HubspotFormError) => {
+            console.error('HubSpot form error:', err);
+            if (err instanceof Error) {
+              setError(err.message);
+            } else if (typeof err === 'object' && err.message) {
+              setError(err.message as string);
+            } else {
+              setError('Unknown form error occurred');
+            }
+          }
         });
         
         setIsLoaded(true);

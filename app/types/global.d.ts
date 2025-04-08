@@ -8,7 +8,7 @@ interface Window {
         target?: string;
         onFormReady?: () => void;
         onFormSubmit?: () => void;
-        onFormError?: (error: any) => void;
+        onFormError?: (error: Error | { message: string; [key: string]: unknown }) => void;
       }) => void;
     };
   };

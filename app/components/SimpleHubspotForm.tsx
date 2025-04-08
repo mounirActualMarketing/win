@@ -8,6 +8,11 @@ interface SimpleHubspotFormProps {
   region: string;
 }
 
+type HubspotFormError = Error | { 
+  message: string; 
+  [key: string]: unknown 
+};
+
 export default function SimpleHubspotForm({ portalId, formId, region }: SimpleHubspotFormProps) {
   const formContainerRef = useRef<HTMLDivElement>(null);
 
@@ -32,6 +37,10 @@ export default function SimpleHubspotForm({ portalId, formId, region }: SimpleHu
             formId,
             region,
             target: '#hubspotDirectForm',
+            onFormError: (err: HubspotFormError) => {
+              console.error('HubSpot form error:', err);
+              // Error handling is done at the container level
+            }
           });
         } catch (err) {
           console.error('Error creating HubSpot form:', err);

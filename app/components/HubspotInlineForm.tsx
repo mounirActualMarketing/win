@@ -11,7 +11,7 @@ export default function HubspotInlineForm() {
   useEffect(() => {
     // Check if HubSpot script loaded successfully
     const timer = setTimeout(() => {
-      if (typeof window.hbspt === 'undefined') {
+      if (typeof window !== 'undefined' && !window.hbspt) {
         setError('HubSpot script failed to load. Please refresh the page and try again.');
       }
     }, 5000); // Check after 5 seconds
@@ -28,7 +28,17 @@ export default function HubspotInlineForm() {
           region: "na1",
           portalId: "2550768",
           formId: "5dbc2ee1-5e21-4e90-b721-ed3804904a1c",
-          target: "#hubspot-form-container"
+          target: "#hubspot-form-container",
+          onFormError: (error) => {
+            console.error('HubSpot form error:', error);
+            if (error instanceof Error) {
+              setError(error.message);
+            } else if (typeof error === 'object' && error.message) {
+              setError(error.message);
+            } else {
+              setError('An unknown error occurred with the form');
+            }
+          }
         });
         console.log('HubSpot form creation requested');
       } else {
