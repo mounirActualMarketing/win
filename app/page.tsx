@@ -223,7 +223,7 @@ export default function Home() {
                           background: 'linear-gradient(90deg, #E74A58 0%, #8C81D7 100%)',
                         }}
                       >
-                        <span className="text-white text-3xl md:text-4xl lg:text-6xl font-bold">1200</span>
+                        <span className="text-white text-3xl md:text-4xl lg:text-6xl font-bold">1740</span>
                         <Image
                           src="/images/rial.png"
                           alt="Currency Symbol"
