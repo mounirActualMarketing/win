@@ -478,7 +478,7 @@ export default function Home() {
               src="https://widget.reviews.io/rich-snippet-reviews-widgets/dist.js"
               strategy="afterInteractive"
               onLoad={() => {
-                // @ts-ignore
+                // @ts-expect-error - Reviews.io widget is loaded at runtime and not typed
                 window.richSnippetReviewsWidgets("carousel-widget", {
                   store: "wall-street-english-saudi-arabia",
                   primaryClr: "#fed130",
