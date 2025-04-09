@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import HubspotFormPopup from "./components/HubspotFormPopup";
+import Script from "next/script";
 
 // Simple error handler for hubspot errors
 function useHubspotErrorHandler() {
@@ -454,6 +455,51 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Reviews Section */}
+      <section className="py-12 md:py-16 bg-[#f8f9fa]">
+        <div className="container mx-auto px-4">
+          {/* Section headlines */}
+          <div className="text-center mb-10 md:mb-16" style={{ direction: 'rtl' }}>
+            <h2 
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-4"
+              style={{ 
+                fontFamily: 'var(--font-montserrat-arabic)',
+              }}
+            >
+              <span className="text-[#0B2E52]">ماذا يقول </span>
+              <span className="text-[#E74A58]">طلابنا </span>
+              <span className="text-[#0B2E52]">عنا؟</span>
+            </h2>
+          </div>
+          
+          {/* Reviews.io Widget */}
+          <div className="max-w-6xl mx-auto">
+            <Script
+              src="https://widget.reviews.io/rich-snippet-reviews-widgets/dist.js"
+              strategy="afterInteractive"
+              onLoad={() => {
+                // @ts-ignore
+                window.richSnippetReviewsWidgets("carousel-widget", {
+                  store: "wall-street-english-saudi-arabia",
+                  primaryClr: "#fed130",
+                  neutralClr: "#cccccc",
+                  reviewTextClr: "#333333",
+                  widgetName: "carousel",
+                  layout: "fullWidth",
+                  numReviews: 40,
+                  showProductImages: false,
+                  contentMode: "company",
+                  hideDates: false,
+                  numberedDates: true,
+                  css: '@import url("https://fonts.googleapis.com/css?family=Open+Sans"); .CarouselWidget, .CarouselWidget .reviewsContainer {font-family: Open Sans!important;} .CarouselWidget .reviewsContainer .reviewWrap .reviewHeader .author, .js-ruk_word { color: #003359!important; } .RatingStatistics .RatingStatistics__Number, .RatingStatistics .RatingStatistics__Text { color: #4f4f4f!important; font-weight: bold; } .fullWidth.CarouselWidget .cw__header > a { max-width: 100%!important; } .CarouselWidget a.header__content .header__stats { width: 100%!important;} .CarouselWidget a.header__content .stats__right { float:none!important; } @media only screen and (max-width: 820px) { .CarouselWidget a.header__content .stats__right { float:left!important; }}'
+                });
+              }}
+            />
+            <div id="carousel-widget" className="w-full" />
+          </div>
+        </div>
+      </section>
+
       {/* Subscriber Benefits Section */}
       <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4">
@@ -498,7 +544,7 @@ export default function Home() {
                     style={{ 
                       direction: 'rtl',
                       fontFamily: 'var(--font-montserrat-arabic)',
-                      minHeight: '100px',
+                      minHeight: '140px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
@@ -529,7 +575,7 @@ export default function Home() {
                     style={{ 
                       direction: 'rtl',
                       fontFamily: 'var(--font-montserrat-arabic)',
-                      minHeight: '100px',
+                      minHeight: '140px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
@@ -560,7 +606,7 @@ export default function Home() {
                     style={{ 
                       direction: 'rtl',
                       fontFamily: 'var(--font-montserrat-arabic)',
-                      minHeight: '100px',
+                      minHeight: '120px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
@@ -591,7 +637,7 @@ export default function Home() {
                     style={{ 
                       direction: 'rtl',
                       fontFamily: 'var(--font-montserrat-arabic)',
-                      minHeight: '100px',
+                      minHeight: '140px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
@@ -622,7 +668,7 @@ export default function Home() {
                     style={{ 
                       direction: 'rtl',
                       fontFamily: 'var(--font-montserrat-arabic)',
-                      minHeight: '100px',
+                      minHeight: '140px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center'
