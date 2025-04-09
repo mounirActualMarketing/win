@@ -4,6 +4,8 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import HubspotFormPopup from "./components/HubspotFormPopup";
 import Script from "next/script";
+import LiveVisitorCounter from "./components/LiveVisitorCounter";
+import ReviewNotifications from "./components/ReviewNotifications";
 
 // Simple error handler for hubspot errors
 function useHubspotErrorHandler() {
@@ -41,6 +43,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white text-white">
+      {/* Social Proof Components */}
+      <LiveVisitorCounter />
+      <ReviewNotifications />
+
       {/* HubSpot Popup */}
       <HubspotFormPopup isOpen={isPopupOpen} onClose={closePopup} />
       
