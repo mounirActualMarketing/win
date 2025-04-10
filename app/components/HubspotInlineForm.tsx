@@ -3,6 +3,31 @@
 import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';
 
+// Define HubSpot types
+type HubspotErrorType = Error | { message: string };
+
+interface HubspotFormOptions {
+  region: string;
+  portalId: string;
+  formId: string;
+  target: string;
+  onFormError?: (error: HubspotErrorType) => void;
+  onFormSubmit?: () => void;
+  onFormReady?: () => void;
+  onFormSubmitted?: () => void;
+}
+
+interface HubspotForms {
+  create: (options: HubspotFormOptions) => void;
+}
+
+interface HubspotWindow {
+  hbspt?: {
+    forms: HubspotForms;
+  };
+  gtag?: (command: string, action: string, parameters?: Record<string, unknown>) => void;
+}
+
 export default function HubspotInlineForm() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -12,10 +37,10 @@ export default function HubspotInlineForm() {
   const triggerGoogleAdsConversion = () => {
     if (typeof window !== 'undefined') {
       try {
-        // Use type assertion only where needed
-        const gtagFunction = (window as any).gtag;
-        if (gtagFunction) {
-          gtagFunction('event', 'conversion', {'send_to': 'AW-934909090/5mJ4CIqV3bYaEKKp5r0D'});
+        // Use properly typed window
+        const customWindow = window as unknown as HubspotWindow;
+        if (customWindow.gtag) {
+          customWindow.gtag('event', 'conversion', {'send_to': 'AW-934909090/5mJ4CIqV3bYaEKKp5r0D'});
           console.log('Google Ads conversion triggered successfully');
         }
       } catch (err) {
@@ -27,7 +52,8 @@ export default function HubspotInlineForm() {
   useEffect(() => {
     // Check if HubSpot script loaded successfully
     const timer = setTimeout(() => {
-      if (typeof window !== 'undefined' && !(window as any).hbspt) {
+      const customWindow = window as unknown as HubspotWindow;
+      if (typeof window !== 'undefined' && !customWindow.hbspt) {
         setError('HubSpot script failed to load. Please refresh the page and try again.');
       }
     }, 5000); // Check after 5 seconds
@@ -39,14 +65,14 @@ export default function HubspotInlineForm() {
     console.log('HubSpot script loaded, attempting to create form');
     
     try {
-      const hbspt = (window as any).hbspt;
-      if (hbspt && containerRef.current) {
-        hbspt.forms.create({
+      const customWindow = window as unknown as HubspotWindow;
+      if (customWindow.hbspt && containerRef.current) {
+        customWindow.hbspt.forms.create({
           region: "na1",
           portalId: "2550768",
           formId: "5dbc2ee1-5e21-4e90-b721-ed3804904a1c",
           target: "#hubspot-form-container",
-          onFormError: (error: any) => {
+          onFormError: (error: HubspotErrorType) => {
             console.error('HubSpot form error:', error);
             if (error instanceof Error) {
               setError(error.message);
