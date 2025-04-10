@@ -8,10 +8,26 @@ export default function HubspotInlineForm() {
   const [error, setError] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Function to trigger Google Ads conversion
+  const triggerGoogleAdsConversion = () => {
+    if (typeof window !== 'undefined') {
+      try {
+        // Use type assertion only where needed
+        const gtagFunction = (window as any).gtag;
+        if (gtagFunction) {
+          gtagFunction('event', 'conversion', {'send_to': 'AW-934909090/5mJ4CIqV3bYaEKKp5r0D'});
+          console.log('Google Ads conversion triggered successfully');
+        }
+      } catch (err) {
+        console.error('Error triggering Google Ads conversion:', err);
+      }
+    }
+  };
+
   useEffect(() => {
     // Check if HubSpot script loaded successfully
     const timer = setTimeout(() => {
-      if (typeof window !== 'undefined' && !window.hbspt) {
+      if (typeof window !== 'undefined' && !(window as any).hbspt) {
         setError('HubSpot script failed to load. Please refresh the page and try again.');
       }
     }, 5000); // Check after 5 seconds
@@ -23,13 +39,14 @@ export default function HubspotInlineForm() {
     console.log('HubSpot script loaded, attempting to create form');
     
     try {
-      if (window.hbspt && containerRef.current) {
-        window.hbspt.forms.create({
+      const hbspt = (window as any).hbspt;
+      if (hbspt && containerRef.current) {
+        hbspt.forms.create({
           region: "na1",
           portalId: "2550768",
           formId: "5dbc2ee1-5e21-4e90-b721-ed3804904a1c",
           target: "#hubspot-form-container",
-          onFormError: (error) => {
+          onFormError: (error: any) => {
             console.error('HubSpot form error:', error);
             if (error instanceof Error) {
               setError(error.message);
@@ -38,6 +55,17 @@ export default function HubspotInlineForm() {
             } else {
               setError('An unknown error occurred with the form');
             }
+          },
+          onFormSubmit: () => {
+            console.log('Form submitted successfully');
+          },
+          onFormReady: () => {
+            console.log('Form is ready');
+          },
+          onFormSubmitted: () => {
+            console.log('Form submission complete');
+            // Trigger Google Ads conversion
+            triggerGoogleAdsConversion();
           }
         });
         console.log('HubSpot form creation requested');

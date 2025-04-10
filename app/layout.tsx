@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from 'next/font/local';
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,8 +32,8 @@ const montserratArabic = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Wall Street English",
-  description: "Wall Street English - The first institute to learn English",
+  title: "Wall Street English Saudi Arabia",
+  description: "Learn English with Wall Street English Saudi Arabia",
 };
 
 export default function RootLayout({
@@ -42,6 +43,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Google Tag Manager */}
+        <Script 
+          id="google-tag-manager"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-4EF7PZNTL0"
+        />
+        <Script 
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-4EF7PZNTL0');
+            `
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserratArabic.variable} antialiased`}
       >
