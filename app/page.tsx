@@ -56,10 +56,10 @@ export default function Home() {
           {/* Logo */}
           <div className="flex justify-end md:justify-end mb-6 md:mb-10">
             <div className="w-full flex justify-center md:justify-end">
-              <Image
+        <Image
                 src="/images/logo.png" 
                 alt="Wall Street English Logo"
-                width={180}
+          width={180}
                 height={54}
                 className="object-contain"
               />
@@ -423,7 +423,7 @@ export default function Home() {
                   }}
                 >
                   <div className="mb-4 md:mb-6">
-                    <Image
+            <Image
                       src="/images/icons/thumbsup.png"
                       alt="Thumbs Up Icon"
                       width={80}
@@ -599,7 +599,7 @@ export default function Home() {
                   }}
                 >
                   <div className="bg-[#0f2f4c] p-4 md:p-6 flex justify-center items-center h-36 md:h-48">
-                    <Image
+          <Image
                       src="/images/icons/fingerprint.png"
                       alt="Fingerprint Icon"
                       width={80}
@@ -630,7 +630,7 @@ export default function Home() {
                   }}
                 >
                   <div className="bg-[#0f2f4c] p-4 md:p-6 flex justify-center items-center h-36 md:h-48">
-                    <Image
+          <Image
                       src="/images/icons/people.png"
                       alt="People Icon"
                       width={80}
@@ -661,7 +661,7 @@ export default function Home() {
                   }}
                 >
                   <div className="bg-[#0f2f4c] p-4 md:p-6 flex justify-center items-center h-36 md:h-48">
-                    <Image
+          <Image
                       src="/images/icons/speakplus.png"
                       alt="Speak+ Logo"
                       width={120}
@@ -696,7 +696,7 @@ export default function Home() {
                 }}
                 onClick={openPopup}
               >
-                الحق العرض لأول 1000 مشترك فقط!
+                الحق العرض لأول 100 مشترك فقط!
               </button>
             </div>
           </div>
