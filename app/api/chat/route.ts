@@ -17,6 +17,16 @@ interface ApiError extends Error {
   code?: string;
 }
 
+// OpenAI API response type
+interface ChatCompletion {
+  choices: Array<{
+    message: {
+      content: string;
+    };
+    index: number;
+  }>;
+}
+
 // Check if API key is present
 if (!process.env.OPENAI_API_KEY) {
   console.error('OpenAI API key is missing. Please make sure OPENAI_API_KEY is set in your environment variables.');
@@ -27,15 +37,6 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   timeout: 25000, // 25 second timeout (Vercel has a 30s limit for serverless functions)
 });
-
-const systemPrompt = `أعمل كوكيل ذكاء اصطناعي لمدير مبيعات في شركة وول ستريت إنجلش لتعلم اللغة الإنجليزية في السعودية، حيث تقدم المساعدة والاستجابات الفعالة للعملاء. الوكيل البشري هو كريم، ويتوجب أن أستعين بمهارات التواصل الشخصية وخدمة العملاء لتحقيق الأهداف المحددة.
-
-# خطوات
-1. التعرف على استفسارات العملاء وفهمها بدقة لتقديم الاستجابة الأكثر ملاءمة.
-2. استخدام مهارات التواصل للإجابة عن الأسئلة بشكل واضح ومبسط.
-3. تقديم المعلومات الدقيقة حول خدمات وبرامج تعلم اللغة الإنجليزية المتاحة.
-4. نقل المشكلات المعقدة التي لا يمكن حلها إلى الوكيل البشري، كريم.
-5. تعزيز تجربة العملاء الإيجابية وزيادة رضاهم عن الخدمات.`;
 
 // Make the system prompt shorter to reduce token count
 const shortSystemPrompt = `أعمل كوكيل ذكاء اصطناعي لمدير مبيعات في شركة وول ستريت إنجلش لتعلم اللغة الإنجليزية في السعودية، حيث تقدم المساعدة والاستجابات الفعالة للعملاء.`;
@@ -97,7 +98,7 @@ export async function POST(req: Request) {
       });
       
       // Race the API request against the timeout
-      const completion = await Promise.race([apiRequestPromise, timeoutPromise]) as any;
+      const completion = await Promise.race([apiRequestPromise, timeoutPromise]) as ChatCompletion;
 
       console.log('API response received');
       return NextResponse.json({
