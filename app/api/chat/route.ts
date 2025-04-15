@@ -1,6 +1,15 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
+interface ChatMessage {
+  role: 'system' | 'user' | 'assistant';
+  content: string;
+}
+
+interface ChatRequest {
+  messages: ChatMessage[];
+}
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -34,7 +43,7 @@ const isPricingQuery = (message: string): boolean => {
 
 export async function POST(req: Request) {
   try {
-    const { messages } = await req.json();
+    const { messages } = await req.json() as ChatRequest;
     const latestMessage = messages[messages.length - 1].content;
 
     if (isPricingQuery(latestMessage)) {
@@ -48,10 +57,7 @@ export async function POST(req: Request) {
       model: "gpt-4",
       messages: [
         { role: "system", content: systemPrompt },
-        ...messages.map((msg: any) => ({
-          role: msg.role,
-          content: msg.content
-        }))
+        ...messages
       ],
       temperature: 0.7,
       max_tokens: 500,
