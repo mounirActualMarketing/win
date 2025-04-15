@@ -10,6 +10,13 @@ interface ChatRequest {
   messages: ChatMessage[];
 }
 
+// Error interface
+interface ApiError extends Error {
+  message: string;
+  status?: number;
+  code?: string;
+}
+
 // Check if API key is present
 if (!process.env.OPENAI_API_KEY) {
   console.error('OpenAI API key is missing. Please make sure OPENAI_API_KEY is set in your environment variables.');
@@ -77,17 +84,19 @@ export async function POST(req: Request) {
         message: completion.choices[0].message.content,
         showPricingForm: false
       });
-    } catch (openaiError: any) {
-      console.error('OpenAI API Error:', openaiError);
+    } catch (openaiError: unknown) {
+      const error = openaiError as ApiError;
+      console.error('OpenAI API Error:', error);
       return NextResponse.json(
-        { error: `OpenAI API error: ${openaiError.message || 'Unknown error'}` },
+        { error: `OpenAI API error: ${error.message || 'Unknown error'}` },
         { status: 500 }
       );
     }
-  } catch (error: any) {
-    console.error('Error:', error);
+  } catch (error: unknown) {
+    const err = error as ApiError;
+    console.error('Error:', err);
     return NextResponse.json(
-      { error: `Failed to process the request: ${error.message || 'Unknown error'}` },
+      { error: `Failed to process the request: ${err.message || 'Unknown error'}` },
       { status: 500 }
     );
   }
