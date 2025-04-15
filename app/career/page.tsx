@@ -2,13 +2,26 @@
 
 import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import Script from 'next/script';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
   showPricingForm?: boolean;
+}
+
+interface Window {
+  hbspt: {
+    forms: {
+      create: (config: HubspotFormConfig) => void;
+    };
+  };
+}
+
+interface HubspotFormConfig {
+  portalId: string;
+  formId: string;
+  region: string;
+  target: string;
 }
 
 export default function CareerPage() {
@@ -30,8 +43,8 @@ export default function CareerPage() {
 
   useEffect(() => {
     // Initialize HubSpot form when needed
-    if (showHubspotForm && (window as any).hbspt) {
-      (window as any).hbspt.forms.create({
+    if (showHubspotForm && (window as Window).hbspt) {
+      (window as Window).hbspt.forms.create({
         portalId: "2550768",
         formId: "8cef6794-2492-48fe-b59d-9912084832da",
         region: "na1",
@@ -173,8 +186,8 @@ export default function CareerPage() {
       script.charset = 'utf-8';
       script.type = 'text/javascript';
       script.onload = () => {
-        if ((window as any).hbspt) {
-          (window as any).hbspt.forms.create({
+        if ((window as Window).hbspt) {
+          (window as Window).hbspt.forms.create({
             region: "na1",
             portalId: "2550768",
             formId: "8cef6794-2492-48fe-b59d-9912084832da",
