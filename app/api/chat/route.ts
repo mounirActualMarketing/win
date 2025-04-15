@@ -53,8 +53,9 @@ export async function POST(req: Request) {
       });
     }
 
+    console.log('Making API request to OpenAI');
     const completion = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-4-turbo",
       messages: [
         { role: "system", content: systemPrompt },
         ...messages
