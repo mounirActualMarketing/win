@@ -10,18 +10,6 @@ interface ChatRequest {
   messages: ChatMessage[];
 }
 
-// Error interface
-interface ApiError extends Error {
-  message: string;
-  status?: number;
-  code?: string;
-}
-
-// Check if API key is present
-if (!process.env.OPENAI_API_KEY) {
-  console.error('OpenAI API key is missing. Please make sure OPENAI_API_KEY is set in your environment variables.');
-}
-
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -55,10 +43,6 @@ const isPricingQuery = (message: string): boolean => {
 
 export async function POST(req: Request) {
   try {
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OpenAI API key is not configured. Please set the OPENAI_API_KEY environment variable.');
-    }
-    
     const { messages } = await req.json() as ChatRequest;
     const latestMessage = messages[messages.length - 1].content;
 
@@ -69,34 +53,24 @@ export async function POST(req: Request) {
       });
     }
 
-    try {
-      const completion = await openai.chat.completions.create({
-        model: "gpt-4",
-        messages: [
-          { role: "system", content: systemPrompt },
-          ...messages
-        ],
-        temperature: 0.7,
-        max_tokens: 500,
-      });
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [
+        { role: "system", content: systemPrompt },
+        ...messages
+      ],
+      temperature: 0.7,
+      max_tokens: 500,
+    });
 
-      return NextResponse.json({
-        message: completion.choices[0].message.content,
-        showPricingForm: false
-      });
-    } catch (openaiError: unknown) {
-      const error = openaiError as ApiError;
-      console.error('OpenAI API Error:', error);
-      return NextResponse.json(
-        { error: `OpenAI API error: ${error.message || 'Unknown error'}` },
-        { status: 500 }
-      );
-    }
-  } catch (error: unknown) {
-    const err = error as ApiError;
-    console.error('Error:', err);
+    return NextResponse.json({
+      message: completion.choices[0].message.content,
+      showPricingForm: false
+    });
+  } catch (error) {
+    console.error('Error:', error);
     return NextResponse.json(
-      { error: `Failed to process the request: ${err.message || 'Unknown error'}` },
+      { error: 'Failed to process the request' },
       { status: 500 }
     );
   }
