@@ -10,6 +10,11 @@ interface ChatRequest {
   messages: ChatMessage[];
 }
 
+// Check if API key is present
+if (!process.env.OPENAI_API_KEY) {
+  console.error('OpenAI API key is missing. Please make sure OPENAI_API_KEY is set in your environment variables.');
+}
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -43,6 +48,10 @@ const isPricingQuery = (message: string): boolean => {
 
 export async function POST(req: Request) {
   try {
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error('OpenAI API key is not configured. Please set the OPENAI_API_KEY environment variable.');
+    }
+    
     const { messages } = await req.json() as ChatRequest;
     const latestMessage = messages[messages.length - 1].content;
 
@@ -53,24 +62,32 @@ export async function POST(req: Request) {
       });
     }
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4",
-      messages: [
-        { role: "system", content: systemPrompt },
-        ...messages
-      ],
-      temperature: 0.7,
-      max_tokens: 500,
-    });
+    try {
+      const completion = await openai.chat.completions.create({
+        model: "gpt-4",
+        messages: [
+          { role: "system", content: systemPrompt },
+          ...messages
+        ],
+        temperature: 0.7,
+        max_tokens: 500,
+      });
 
-    return NextResponse.json({
-      message: completion.choices[0].message.content,
-      showPricingForm: false
-    });
-  } catch (error) {
+      return NextResponse.json({
+        message: completion.choices[0].message.content,
+        showPricingForm: false
+      });
+    } catch (openaiError: any) {
+      console.error('OpenAI API Error:', openaiError);
+      return NextResponse.json(
+        { error: `OpenAI API error: ${openaiError.message || 'Unknown error'}` },
+        { status: 500 }
+      );
+    }
+  } catch (error: any) {
     console.error('Error:', error);
     return NextResponse.json(
-      { error: 'Failed to process the request' },
+      { error: `Failed to process the request: ${error.message || 'Unknown error'}` },
       { status: 500 }
     );
   }
