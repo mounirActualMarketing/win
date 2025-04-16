@@ -214,33 +214,14 @@ export default function Home() {
             >
               {/* Discount ribbon */}
               <div className="flex flex-col items-center justify-center mb-4 md:mb-8">
-                <div 
-                  className="w-full max-w-[700px] text-center"
-                  style={{
-                    fontFamily: 'var(--font-montserrat-arabic)',
-                  }}
-                >
-                  {/* Outer pink background */}
-                  <div className="bg-[#F9C1CC] rounded-full py-3 md:py-5 px-2 flex justify-center items-center">
-                    <div className="flex items-center justify-center" style={{ direction: 'rtl' }}>
-                      <div className="text-white font-bold text-xl md:text-2xl lg:text-4xl mr-2 md:mr-4">خصم بقيمة</div>
-                      <div 
-                        className="rounded-lg inline-flex items-center px-3 md:px-6 py-1"
-                        style={{ 
-                          background: 'linear-gradient(90deg, #E74A58 0%, #8C81D7 100%)',
-                        }}
-                      >
-                        <span className="text-white text-3xl md:text-4xl lg:text-6xl font-bold">1740</span>
-                        <Image
-                          src="/images/rial.png"
-                          alt="Currency Symbol"
-                          width={48}
-                          height={48}
-                          className="ml-1 object-contain w-6 h-6 md:w-8 md:h-8 lg:w-12 lg:h-12"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                <div className="w-full max-w-[700px] text-center">
+                  <Image
+                    src="/images/discount.png"
+                    alt="خصم بقيمة 1740 ريال"
+                    width={700}
+                    height={160}
+                    className="w-full h-auto object-contain"
+                  />
                 </div>
               </div>
 
