@@ -221,28 +221,90 @@ export default function Home() {
                     width={700}
                     height={160}
                     className="w-full h-auto object-contain"
+                    priority
                   />
                 </div>
               </div>
 
-              {/* Register button inside the container */}
-              <div className="flex justify-center">
-                <button
-                  className="bg-[#E74A58] text-white px-6 md:px-10 py-3 md:py-4 rounded-full text-xl md:text-2xl font-bold transition-transform hover:scale-105 hover:bg-[#d42838]"
-                  style={{ 
-                    direction: 'rtl',
-                    fontFamily: 'var(--font-montserrat-arabic)'
-                  }}
-                  onClick={openPopup}
-                >
-                  سجّل واربح!
-                </button>
+              {/* Prize opportunities */}
+              <div className="flex flex-col md:flex-row gap-4 md:gap-6 justify-between">
+                {/* Dubai Trip Prize */}
+                <div className="bg-[#F4616E] rounded-xl md:rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center text-white md:w-1/2">
+                  <div className="md:w-1/3 mb-3 md:mb-0">
+                    <Image
+                      src="/images/dubai.jpeg"
+                      alt="Dubai"
+                      width={150}
+                      height={180}
+                      className="object-cover rounded-lg w-28 h-28 md:w-auto md:h-auto"
+                    />
+                  </div>
+                  <div className="md:w-2/3 text-right"
+                    style={{ 
+                      direction: 'rtl',
+                      fontFamily: 'var(--font-montserrat-arabic)',
+                    }}
+                  >
+                    <h3 className="text-xl md:text-2xl font-bold mb-1 md:mb-2">فرصة لربح</h3>
+                    <p 
+                      className="text-lg md:text-xl font-bold mb-1 md:mb-2 px-2 py-1 rounded"
+                      style={{ 
+                        background: 'linear-gradient(90deg, #FA5C78 0%, #8C81D7 100%)',
+                        display: 'inline-block'
+                      }}
+                    >
+                      تذكرتان سفر إلى
+                    </p>
+                    <p className="text-base md:text-lg font-bold mb-1">دبي مع إقامة</p>
+                    <p className="text-base md:text-lg font-bold">لمدة 3 أيام</p>
+                  </div>
+                </div>
+                
+                {/* iPhone Prize */}
+                <div className="bg-[#E74A58] rounded-xl md:rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center text-white md:w-1/2">
+                  <div className="md:w-1/3 mb-3 md:mb-0">
+                    <Image
+                      src="/images/iphone.png"
+                      alt="iPhone"
+                      width={150}
+                      height={180}
+                      className="object-contain w-28 h-28 md:w-auto md:h-auto"
+                    />
+                  </div>
+                  <div className="md:w-2/3 text-right"
+                    style={{ 
+                      direction: 'rtl',
+                      fontFamily: 'var(--font-montserrat-arabic)',
+                    }}
+                  >
+                    <h3 
+                      className="text-lg md:text-xl font-bold mb-1 md:mb-2 px-2 py-1 rounded"
+                      style={{ 
+                        background: 'linear-gradient(90deg, #FA5C78 0%, #8C81D7 100%)',
+                        display: 'inline-block'
+                      }}
+                    >
+                      فرصة لربح
+                    </h3>
+                    <p className="text-xl md:text-2xl lg:text-3xl font-bold">أيفون جديد</p>
+                  </div>
+                </div>
               </div>
-              
             </div>
 
-            {/* Register button - Now removed since it's inside the container */}
-            
+            {/* Register button */}
+            <div className="flex justify-center">
+              <button
+                className="bg-[#E74A58] text-white px-6 md:px-10 py-3 md:py-4 rounded-full text-xl md:text-2xl font-bold transition-transform hover:scale-105 hover:bg-[#d42838]"
+                style={{ 
+                  direction: 'rtl',
+                  fontFamily: 'var(--font-montserrat-arabic)'
+                }}
+                onClick={openPopup}
+              >
+                سجّل واربح!
+              </button>
+            </div>
           </div>
         </div>
       </section>
