@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import { Montserrat } from 'next/font/google';
 import { Inter as GeistSans } from 'next/font/google';
 import { Roboto_Mono as GeistMono } from 'next/font/google';
 import "./globals.css";
 import Script from "next/script";
-
-const montserratArabic = Montserrat({ 
-  subsets: ['latin'],
-  variable: '--font-montserrat',
-});
 
 const geistSans = GeistSans({
   subsets: ['latin'],
@@ -69,7 +63,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} ${montserratArabic.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>
