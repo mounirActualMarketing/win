@@ -224,7 +224,7 @@ export default function Home() {
                       ابشر باللي يرضيك وزيادة!
                     </p>
                     <a 
-                      href="https://2550768.fs1.hubspotusercontent-na1.net/hubfs/2550768/arabic%20version%20.pdf"
+                      href="https://2550768.fs1.hubspotusercontent-na1.net/hubfs/2550768/%D8%A7%D9%84%D8%AD%D9%85%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D8%B1%D9%8A%D8%A9%20%D9%84%D9%84%D9%85%D8%AA%D9%81%D9%88%D9%82%D9%8A%D9%86%20%20%D8%A7%D9%84%D8%B4%D8%B1%D9%88%D8%B7%20%D9%88%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-2.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[#003359] text-sm md:text-base mt-2 block underline"
