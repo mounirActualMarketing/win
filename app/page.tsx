@@ -223,6 +223,19 @@ export default function Home() {
                     >
                       ابشر باللي يرضيك وزيادة!
                     </p>
+                    <a 
+                      href="https://2550768.fs1.hubspotusercontent-na1.net/hubfs/2550768/arabic%20version%20.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#003359] text-sm md:text-base mt-2 block underline"
+                      style={{ 
+                        fontFamily: 'var(--font-montserrat-arabic)',
+                        textAlign: 'right',
+                        direction: 'rtl'
+                      }}
+                    >
+                      اضغط لمعرفة الشروط والأحكام
+                    </a>
                   </div>
                 </div>
                 
